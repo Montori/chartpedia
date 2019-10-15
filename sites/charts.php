@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
 <body>
+<script type="text/javascript" src="https://threejs.org/build/three.js"></script>
 <div class="container-fluid" id='content-container'>
   <div class="row">
     <div class="col-sm-3">

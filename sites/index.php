@@ -4,7 +4,8 @@
 <!-- Das ist der Main Body Container, hier kommt der ganze Content hin -->
 
 <body>
-  <script src="js/three.js"></script>
+  <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
+  <script src="../scripts/drei.js"></script>
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -68,24 +69,11 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="card bg-dark text-light">
-          <div class="card-body">
-            <h1 class="card-title">DREI</h1>
-            <div>
-              <script>
-                var scene = new THREE.Scene();
-                var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-                var renderer = new THREE.WebGLRenderer();
-                renderer.setSize( window.innerWidth, window.innerHeight );
-                document.body.appendChild( renderer.domElement );
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+      <script>
+        init();
+        animate();
+      </script>
     </div>
 </body>
 

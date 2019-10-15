@@ -1,26 +1,11 @@
-var options = {
-  title: 'Temperature',
+var optionsTemp = {
   backgroundColor: '#343a40',
   curveType: 'function',
-  hAxis: {
-    title: 'Time',
-    titleTextStyle: {
-      color: '#333'
-    }
-  },
-  vAxis: {
-    minValue: 0
-  },
-  'chartArea': {
-    'backgroundColor': {
-      'fill': '#343a40',
-      'opacity': 100
-    },
-  },
   titleTextStyle: {
     color: 'white'
   },
   hAxis: {
+    title: 'Time',
     textStyle: {
       color: 'white'
     },
@@ -71,10 +56,10 @@ google.charts.load('current', {
         }
 
 
-        var data = google.visualization.arrayToDataTable(a);
+        let data = google.visualization.arrayToDataTable(a);
 
-        var chart = new google.visualization.LineChart(document.getElementById("temp-chart"));
-        chart.draw(data,options);
+        let chart = new google.visualization.LineChart(document.getElementById("temp-chart"));
+        chart.draw(data,optionsTemp);
       }
     };
     let radioLocation = document.getElementById("radioInside");
@@ -83,7 +68,7 @@ google.charts.load('current', {
     let locationValue = radioLocation.checked ? radioLocation.value : document.getElementById("radioOutside").value;
     let cardinalPoint = radioCardinal.checked ? radioCardinal.value : document.getElementById("radioEast").value;
 
-    xmlhttp.open("GET", "../scripts/dbDataForQuery.php?d=" + document.getElementById("date").value + "&l=" + locationValue + "&c=" + cardinalPoint, true);
+    xmlhttp.open("GET", "../scripts/tempQuery.php?d=" + document.getElementById("date").value + "&l=" + locationValue + "&c=" + cardinalPoint, true);
     xmlhttp.send();
   });
 });

@@ -1,58 +1,74 @@
-/*google.charts.load('current', {
-  'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ['Time', 'Celsius'],
-    ['06:00', 79],
-    ['09:00', 81],
-    ['12:00', 82],
-    ['15:00', 89],
-    ['18:00', 95],
-    ['21:00', 85],
-    ['00:00', 79],
-    ['03:00', 78],
-  ]);
-
-  var options = {
-    backgroundColor: '#343a40',
-    curveType: 'function',
-    legend: {
-      position: 'bottom'
+var optionsCPU = {
+  backgroundColor: '#343a40',
+  curveType: 'function',
+  titleTextStyle: {
+    color: 'white'
+  },
+  hAxis: {
+    title: 'Time',
+    textStyle: {
+      color: 'white'
     },
     titleTextStyle: {
       color: 'white'
+    }
+  },
+  vAxis: {
+    title: 'Temperature',
+    textStyle: {
+      color: 'white'
     },
-    hAxis: {
-      title: 'Time',
-      textStyle: {
-        color: 'white'
-      },
-      titleTextStyle: {
-        color: 'white'
-      }
-    },
-    vAxis: {
-      title: 'Temperature',
-      textStyle: {
-        color: 'white'
-      },
-      titleTextStyle: {
-        color: 'white'
-      }
-    },
-    legend: {
-      textStyle: {
-        color: 'white'
-      }
-    },
-    colors: ['#01FFFF']
-  };
+    titleTextStyle: {
+      color: 'white'
+    }
+  },
+  legend: {
+    textStyle: {
+      color: 'white'
+    }
+  },
+  colors: ['#01FFFF']
+};
 
-  var chart = new google.visualization.LineChart(document.getElementById('cpu-chart'));
+google.charts.load('current', {
+  packages: ['corechart']
+}).then(function () {
+  $(".btn").click(function() {
 
-  chart.draw(data, options);
-}
-*/
+    let xmlhttpHum = new XMLHttpRequest();
+    xmlhttpHum.onreadystatechange = function()
+    {
+      if (this.readyState == 4 && this.status == 200)
+      {
+        let result = this.responseText.split("//");
+
+        let a = []
+
+        a.push(['Time','Temperature']);
+
+        for (let i = 0; i < result.length; i++) {
+          let tmp = result[i].split(";");
+          let time = tmp[1];
+          if(time != null){
+            time = time.substr(11,14);
+          }
+          a.push([time, parseFloat(tmp[0])]);
+        }
+
+
+        let data = google.visualization.arrayToDataTable(a);
+
+        let chart = new google.visualization.LineChart(document.getElementById("cpu-chart"));
+        chart.draw(data,optionsCPU);
+      }
+    };
+    let radioLocation = document.getElementById("radioInside");
+    let radioCardinal = document.getElementById("radioWest");
+
+    let locationValue = radioLocation.checked ? radioLocation.value : document.getElementById("radioOutside").value;
+    let cardinalPoint = radioCardinal.checked ? radioCardinal.value : document.getElementById("radioEast").value;
+
+    xmlhttpHum.open("GET", "../scripts/cpuTempQuery.php?d=" + document.getElementById("date").value + "&l=" + locationValue + "&c=" + cardinalPoint, true);
+    xmlhttpHum.send();
+  });
+});
