@@ -1,5 +1,9 @@
 <?php include 'header.php'; ?>
 
+<script type="text/javascript" src="../scripts/humScript.js"></script>
+<script type="text/javascript" src="../scripts/tempScript.js"></script>
+<script type="text/javascript" src="../scripts/cpuScript.js"></script>
+
 <body>
 <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
 <div class="container-fluid" id='content-container'>
@@ -36,7 +40,7 @@
                   <label class="custom-control-label" for="radioInside">Inside</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="radioOutside" name="radioInlineInOut" class="custom-control-input" value="ÕUES">
+                  <input type="radio" id="radioOutside" name="radioInlineInOut" class="custom-control-input" value="OUES">
                   <label class="custom-control-label" for="radioOutside">Outside</label>
                 </div>
               </div>

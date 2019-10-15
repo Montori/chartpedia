@@ -1,6 +1,5 @@
 <?php include 'database/databaseConnection.php'; ?>
 <?php include 'header.php'; ?>
-
 <!-- Das ist der Main Body Container, hier kommt der ganze Content hin -->
 
 <body>
