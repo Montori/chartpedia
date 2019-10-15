@@ -1,0 +1,75 @@
+body {
+  background-color: rgba(36, 37, 42, 1);
+}
+
+.radio-btns {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#navbarnav {
+    height: 50px;
+    background: #b7d84b;
+    position:fixed;
+    z-index:10;
+    width:900px;
+    top:0;
+}
+
+#header {
+  height: 200px;
+  margin-bottom: 0;
+  text-align: center;
+  background-image: url("https://wallpaperstock.net/wallpapers/thumbs1/39010hd.png");
+  background-size: cover;
+}
+
+#header h1 {
+  color: #F0FFFF;
+  font-size: 72px;
+}
+
+#header p {
+  color: #F0FFFF;
+  margin-bottom: 50px;
+}
+
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.fab:hover {
+  opacity: 0.7;
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: #686b7a;
+}
+
+a:active {
+  background-color: #686b7a;
+  color: #686b7a;
+}
+
+.container>.row>.text-left {
+  text-align: center;
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+}
+
+.card {
+  margin-top: 15px;
+}
+
+.ui-datepicker .ui-widget-content {
+background: #F0FFFF;
+}
