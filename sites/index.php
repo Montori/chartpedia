@@ -4,7 +4,6 @@
 
 <body>
   <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
-  <script src="../scripts/drei.js"></script>
   <div class="container">
     <div class="row">
       <div class="col-12">

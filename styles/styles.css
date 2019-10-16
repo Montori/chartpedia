@@ -73,3 +73,7 @@ ul {
 .ui-datepicker .ui-widget-content {
 background: #F0FFFF;
 }
+
+$('#sandbox-container input').datepicker({
+    format: "mm/dd"
+});

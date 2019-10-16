@@ -27,13 +27,17 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-dark mb-3">
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="index.php">Chartpedia</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active text-white-50" href="charts.php">Charts</a>
+          <a class="nav-link active text-white-50" href="temperature.php">Temperature</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white-50" href="humidity.php">Humidity</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white-50" href="cpuTemperature.php">CPU-Temperature</a>
         </li>
       </ul>
-    </div>
     <div>
       <a href="https://github.com/Montori/chartpediaphp" class="fab fa-github text-light d-inline" style="text-decoration: none;"></a>
     </div>
