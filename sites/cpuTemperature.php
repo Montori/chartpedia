@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
 <script type="text/javascript" src="../scripts/cpuScript.js"></script>
+<script type="text/javascript" src="../scripts/graphDetector.js"></script>
 
 <body>
 <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
@@ -38,7 +39,7 @@
                       $(".datepicker-days .datepicker-switch").text(dateTitle);
                   });
               </script>
-              <div class=" float-sm-right">
+              <div class=" float-right">
                 <button class="btn btn-primary" id="btnC" type="button">Submit</button>
               </div>
               <script>jQuery(function(){jQuery('.btn').click();});</script>

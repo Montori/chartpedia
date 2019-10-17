@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
 <script type="text/javascript" src="../scripts/humScript.js"></script>
+<script type="text/javascript" src="../scripts/graphDetector.js"></script>
 
 <body>
 <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
@@ -39,16 +40,16 @@
                   });
               </script>
               <div>
-                <div class="custom-control custom-radio custom-control-inline radio-buttons">
+                <div class="custom-control custom-radio custom-control-inline radio-buttons mb-3">
                   <input type="radio" id="radioWest" name="radioInlineWE" class="custom-control-input" checked="checked" value="west">
                   <label class="custom-control-label" for="radioWest">West</label>
                 </div>
-                <div class="custom-control custom-radio custom-control-inline">
+                <div class="custom-control custom-radio custom-control-inline mb-3">
                   <input type="radio" id="radioEast" name="radioInlineWE" class="custom-control-input" value="east">
                   <label class="custom-control-label" for="radioEast">East</label>
                 </div>
               </div>
-              <div class=" float-sm-right">
+              <div class=" float-right">
                 <button class="btn btn-primary" id="btnC" type="button">Submit</button>
               </div>
               <script>jQuery(function(){jQuery('.btn').click();});</script>

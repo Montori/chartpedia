@@ -42,11 +42,11 @@
             <h3 class="card-title">Malte Bohn</h3>
             <h6 class="card-subtitle mb-2 text-muted">Profile</h6>
             <p class="card-text">About me</p>
+            I'm a computer science student and do most of my work with Java, JavaScript and started web development recently
+            <br><br>
             <h5 class="card-title">Follow me</h5>
             <div>
               <a href="https://github.com/Montori" class="fab fa-github text-light d-inline" target="_blank" style="text-decoration: none;"></a>
-              <a href="#" class="fab fa-linkedin" target="_blank" style="text-decoration: none;"></a>
-              <a href="#" class="fab fa-twitter" target="_blank" style="text-decoration: none;"></a>
             </div>
           </div>
         </div>
@@ -60,18 +60,10 @@
             <h5 class="card-title">Follow me</h5>
             <div>
               <a href="https://github.com/Gencreezo" class="fab fa-github text-light d-inline" target="_blank" style="text-decoration: none;"></a>
-              <a href="#" class="fab fa-linkedin" target="_blank" style="text-decoration: none;"></a>
-              <a href="#" class="fab fa-twitter" target="_blank" style="text-decoration: none;"></a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <script>
-        init();
-        animate();
-      </script>
     </div>
 </body>
 

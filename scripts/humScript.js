@@ -18,7 +18,6 @@ var humOptions = {
   },
   vAxis: {
     title: 'Humidity',
-    scaleType: 'log',
     textStyle: {
       color: 'white'
     },
@@ -58,7 +57,6 @@ var tempOptions = {
   },
   vAxis: {
     title: 'Temperature',
-    scaleType: 'log',
     textStyle: {
       color: 'white'
     },
@@ -83,91 +81,91 @@ google.charts.load('current', {
 }).then(function () {
   $(".btn").click(function() {
 
-    var xmlhttpHum = new XMLHttpRequest();
-    xmlhttpHum.onreadystatechange = function()
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
     {
       if (this.readyState == 4 && this.status == 200)
       {
-        let result = this.responseText.split("//");
-        let a2016 = [];
-        let a2017 = [];
-        let a2018 = [];
-        let a2019 = [];
-
-        for (var i = 0; i < result.length; i++) {
-          let tmp = result[i].split(";");
-
-          if(tmp[1] != null){
-            switch (tmp[1].substring(0,4)) {
-              case '2019': a2019.push(result[i]); break;
-              case '2018': a2018.push(result[i]); break;
-              case '2017': a2017.push(result[i]); break;
-              case '2016': a2016.push(result[i]); break;
-            }
-          }
-        }
-
-        let humidityArray = [];
+        let splitData = getAllYears(this.responseText);
+        let humArray = [];
         let tempArray = [];
+        let humHeader = ['Time'];
+        let tempHeader = ['Time'];
+        let iterator = 0;
         let maxValue = 0;
         let minValue = 50;
+        let maxTempValue = 0;
+        let minTempValue = 50;
 
-        humidityArray.push(['Time','2016', '2017', '2018', '2019']);
-        tempArray.push(['Time', '2016', '2017', '2018', '2019']);
-
-        for (var i = 0; i < a2018.length; i++) {
-          let tmp2016 = a2016[i] !== null && a2016[i] !== undefined ? a2016[i].split(";") : i == 0 ? ["",0,0] : [undefined,undefined, undefined];
-          let tmp2017 = a2017[i] !== null && a2017[i] !== undefined ? a2017[i].split(";") : i == 0 ? ["",0,0] : [undefined,undefined, undefined];
-          let tmp2018 = a2018[i] !== null && a2018[i] !== undefined ? a2018[i].split(";") : i == 0 ? ["",0,0] : [undefined,undefined, undefined];
-          let tmp2019 = a2019[i] !== null && a2019[i] !== undefined ? a2019[i].split(";") : i == 0 ? ["",0,0] : [undefined,undefined, undefined];
-          let hum2016 = tmp2016[0] !== undefined ? parseFloat(tmp2016[0]) : undefined;
-          let hum2017 = tmp2017[0] !== undefined ? parseFloat(tmp2017[0]) : undefined;
-          let hum2018 = tmp2018[0] !== undefined ? parseFloat(tmp2018[0]) : undefined;
-          let hum2019 = tmp2019[0] !== undefined ? parseFloat(tmp2019[0]) : undefined;
-          let cel2016 = tmp2016[0] !== undefined ? parseFloat(tmp2016[2]) : undefined;
-          let cel2017 = tmp2017[0] !== undefined ? parseFloat(tmp2017[2]) : undefined;
-          let cel2018 = tmp2018[0] !== undefined ? parseFloat(tmp2018[2]) : undefined;
-          let cel2019 = tmp2019[0] !== undefined ? parseFloat(tmp2019[2]) : undefined;
-          let time = tmp2018[1];
-
-          if(hum2016 > maxValue) maxValue = Math.ceil(hum2016);
-          if(hum2017 > maxValue) maxValue = Math.ceil(hum2017);
-          if(hum2018 > maxValue) maxValue = Math.ceil(hum2018);
-          if(hum2019 > maxValue) maxValue = Math.ceil(hum2019);
-          if(hum2016 < minValue) minValue = Math.floor(hum2016);
-          if(hum2017 < minValue) minValue = Math.floor(hum2017);
-          if(hum2018 < minValue) minValue = Math.floor(hum2018);
-          if(hum2019 < minValue) minValue = Math.floor(hum2019);
-
-          humidityArray.push([time, hum2016, hum2017, hum2018, hum2019]);
-          tempArray.push([time, cel2016, cel2017, cel2018, cel2019]);
+        for (let i = 0; i < splitData.length; i++) {
+          humHeader.push(splitData[i][0][1].substring(0,4));
+          tempHeader.push(splitData[i][0][1].substring(0,4));
+          if(splitData[i].length > iterator) iterator = splitData[i].length;
         }
 
-        let optionsTemp = humOptions;
+        humArray.push(humHeader);
+        tempArray.push(tempHeader);
 
+        for (let i = 0; i < iterator; i++)
+        {
+          let tmpRecord = [];
+          let tmpTempRecord = [];
+          let time;
+
+          for (let ii = 0; ii < splitData.length; ii++)
+          {
+            if(splitData[ii][i] !== undefined && splitData[ii][i] !== null)
+            {
+              let value = parseFloat(splitData[ii][i][0]);
+              let tempValue = parseFloat(splitData[ii][i][2]);
+              if(value > maxValue) maxValue = Math.ceil(value);
+              if(value < minValue) minValue = Math.floor(value);
+              if(tempValue > maxTempValue) maxTempValue = Math.ceil(tempValue);
+              if(tempValue < minTempValue) minTempValue = Math.floor(tempValue);
+              time = splitData[ii][i][1].substring(10);
+
+              tmpRecord.push(value);
+              tmpTempRecord.push(tempValue);
+            }
+            else
+            {
+              tmpRecord.push(undefined);
+              tmpTempRecord.push(undefined);
+            }
+          }
+          tmpRecord.unshift(time);
+          tmpTempRecord.unshift(time);
+          humArray.push(tmpRecord);
+          tempArray.push(tmpTempRecord);
+        }
         humOptions.vAxis.viewWindow=
         {
             max: maxValue,
-            min: minValue
+            min: minValue,
+        };
+        tempOptions.vAxis.viewWindow=
+        {
+            max: maxTempValue,
+            min: minTempValue,
         };
 
-        let humData = google.visualization.arrayToDataTable(humidityArray);
+
+        let data = google.visualization.arrayToDataTable(humArray);
         let tempData = google.visualization.arrayToDataTable(tempArray);
 
-        let humChart = new google.visualization.LineChart(document.getElementById("hum-chart"));
-        let tempChart = new google.visualization.LineChart(document.getElementById("humtemp-chart"));
-        humChart.draw(humData,humOptions);
-        tempChart.draw(tempData,tempOptions);
+        let chart = new google.visualization.LineChart(document.getElementById("hum-chart"));
+        let chart2 = new google.visualization.LineChart(document.getElementById("humtemp-chart"));
+        chart.draw(data,humOptions);
+        chart2.draw(tempData,tempOptions);
       }
     };
+
     let radioCardinal = document.getElementById("radioWest");
 
     let cardinalPoint = radioCardinal.checked ? radioCardinal.value : document.getElementById("radioEast").value;
     let queryDate = document.getElementById("date").value;
 
-    console.log(queryDate);
-
-    xmlhttpHum.open("GET", "../scripts/humQuery.php?d=" + queryDate + "&c=" + cardinalPoint, true);
-    xmlhttpHum.send();
+    xmlhttp.open("GET", "../scripts/humQuery.php?d=" + queryDate + "&c=" + cardinalPoint, true);
+    xmlhttp.send();
   });
 });

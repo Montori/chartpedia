@@ -2,11 +2,6 @@ body {
   background-color: rgba(36, 37, 42, 1);
 }
 
-.radio-btns {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 #navbarnav {
     height: 50px;
     background: #b7d84b;
