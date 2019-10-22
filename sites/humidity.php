@@ -1,24 +1,23 @@
 <?php include 'header.php'; ?>
 
-<script type="text/javascript" src="../scripts/humScript.js"></script>
-<script type="text/javascript" src="../scripts/graphDetector.js"></script>
+<script src="../scripts/humScript.js"></script>
+<script src="../scripts/graphDetector.js"></script>
 
-<body>
-<script type="text/javascript" src="https://threejs.org/build/three.js"></script>
 <div class="container-fluid" id='content-container'>
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-xl-3">
       <div class="container">
         <div class="card bg-dark text-light">
           <div class="card-body">
             <h2 class="card-title">Filter</h2>
             <form>
-              <label for="daterangeInput">Date</label>
+              <fieldset>
+              <label for="date">Date</label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  <span class="input-group-text"><em class="far fa-calendar-alt"></em></span>
                 </div>
-                <input class="form-control disable" id="date" name="date" placeholder="MM-DD" type="text" value="05-29"/>
+                <input class="form-control disable" id="date" name="date" placeholder="MM-DD" type="text" value="01-01"/>
               </div>
               <script>
                   $(document).ready(function(){
@@ -52,13 +51,13 @@
               <div class=" float-right">
                 <button class="btn btn-primary" id="btnC" type="button">Submit</button>
               </div>
-              <script>jQuery(function(){jQuery('.btn').click();});</script>
+            </fieldset>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-9" id="charts">
+    <div class="col-xl-9" id="charts">
       <div class="card bg-dark text-light">
         <div class="card-body">
           <h2 class="card-title">Humidity</h2>
@@ -74,12 +73,5 @@
     </div>
   </div>
 </div>
-</div>
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-<link rel="stylesheet" href="../styles/styles.css">
-
-
 </html>

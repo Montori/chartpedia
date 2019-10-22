@@ -1,6 +1,6 @@
 <?php include '../database/databaseConnection.php'; ?>
 <?php
-  $sql = "SELECT * FROM cpu_temperatuur WHERE kuupaev LIKE '%".$_REQUEST["d"]."%' ORDER BY kuupaev ASC";
+  $sql = "SELECT * FROM cpu_temperatuur WHERE kuupaev LIKE '%{$_REQUEST["d"]}%' ORDER BY kuupaev ASC";
   $result = $conn->query($sql);
 
   if($result->num_rows > 0){

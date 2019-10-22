@@ -29,6 +29,10 @@ body {
   margin-bottom: 50px;
 }
 
+#titlesubtitle {
+  font-size: 20px;
+}
+
 .fab {
   padding: 5px;
   font-size: 30px;
@@ -70,5 +74,42 @@ background: #F0FFFF;
 }
 
 $('#sandbox-container input').datepicker({
-    format: "mm/dd"
+  orientation: "bottom auto"
 });
+
+.btn-dark{
+  background-color: rgba(36, 37, 42, 1);
+}
+
+.form-control::placeholder { color: #999;} /* Chrome, Firefox, Opera*/
+.-ms-input-placeholder.form-control { color: #999; }  /* Internet Explorer*/
+.form-control::-ms-input-placeholder { color: #999; }  /* Microsoft Edge*/
+
+.modal-header {
+  background-color: #24252a;
+}
+
+.modal-content{
+  background-color: #343a40;
+}
+
+.page-link{
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.pagination a{
+  color: white;
+}
+
+.page-item.active .page-link {
+  color: white;
+  z-index: 1;
+  background-color: #6c757d;
+  border-color: #343a40;
+}
+.page-link:focus, .page-link:hover {
+  color: white;
+  background-color: #6c757d;
+  border-color: #343a40;
+}

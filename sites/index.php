@@ -2,8 +2,6 @@
 <?php include 'header.php'; ?>
 <!-- Das ist der Main Body Container, hier kommt der ganze Content hin -->
 
-<body>
-  <script type="text/javascript" src="https://threejs.org/build/three.js"></script>
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -41,12 +39,12 @@
           <div class="card-body">
             <h3 class="card-title">Malte Bohn</h3>
             <h6 class="card-subtitle mb-2 text-muted">Profile</h6>
-            <p class="card-text">About me</p>
+            <h5 class="card-text">About me</h5>
             I'm a computer science student and do most of my work with Java, JavaScript and started web development recently
             <br><br>
             <h5 class="card-title">Follow me</h5>
             <div>
-              <a href="https://github.com/Montori" class="fab fa-github text-light d-inline" target="_blank" style="text-decoration: none;"></a>
+              <a href="https://github.com/Montori" class="fab fa-github text-light d-inline" title="Follow me on GitHub" target="_blank" style="text-decoration: none;"></a>
             </div>
           </div>
         </div>
@@ -56,22 +54,17 @@
           <div class="card-body">
             <h3 class="card-title">Daniel Hartung</h3>
             <h6 class="card-subtitle mb-2 text-muted">Profile</h6>
-            <p class="card-text">About me</p>
+            <h5 class="card-text">About me</h5>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque quae corporis aliquam accusantium molestias, ex?
+            <br><br>
             <h5 class="card-title">Follow me</h5>
             <div>
-              <a href="https://github.com/Gencreezo" class="fab fa-github text-light d-inline" target="_blank" style="text-decoration: none;"></a>
+              <a href="https://github.com/Gencreezo" class="fab fa-github text-light d-inline" title="Follow me on GitHub" target="_blank" style="text-decoration: none;"></a>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="scripts/dataGetter.js"></script>
-
-<link rel="stylesheet" href="../styles/styles.css">
-
 </html>
